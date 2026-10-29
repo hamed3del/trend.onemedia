@@ -6,7 +6,7 @@
     <title>Trend One Media</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- خط Cairo -->
+    <!-- Google Fonts: Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
 
-        /* تخصيص مؤشر الماوس */
+        /* تخصيص مؤشر الماوس على الشاشات التي تدعم الماوس فقط */
         @media (pointer: fine) {
             body {
                 cursor: none;
@@ -27,66 +27,114 @@
         .cursor-dot {
             width: 8px;
             height: 8px;
-            background-color: #3b82f6;
+            background-color: #38bdf8;
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
-            transition: opacity 0.2s ease;
-            box-shadow: 0 0 10px #3b82f6, 0 0 20px #2563eb;
+            box-shadow: 0 0 12px #38bdf8, 0 0 24px #0284c7;
         }
 
         .cursor-outline {
-            width: 36px;
-            height: 36px;
-            border: 2px solid rgba(59, 130, 246, 0.5);
+            width: 38px;
+            height: 38px;
+            border: 2px solid rgba(56, 189, 248, 0.45);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 99998;
             transform: translate(-50%, -50%);
-            transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.08s ease-out;
+            transition: width 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        height 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        background-color 0.25s ease, 
+                        border-color 0.25s ease;
         }
 
-        /* حالة التكبير عند الوقوف فوق الأزرار والروابط */
         .cursor-hover {
-            width: 54px;
-            height: 54px;
-            background-color: rgba(59, 130, 246, 0.15);
-            border-color: #60a5fa;
-            backdrop-filter: blur(2px);
+            width: 58px;
+            height: 58px;
+            background-color: rgba(56, 189, 248, 0.12);
+            border-color: #38bdf8;
+            backdrop-filter: blur(3px);
         }
 
-        /* تأثير النبض البطيء للخلفية */
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.15; transform: scale(1); }
-            50% { opacity: 0.25; transform: scale(1.08); }
+        /* شبكة خلفية هندسية ناعمة */
+        .cyber-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
-        .animate-pulse-slow {
-            animation: pulse-slow 8s infinite ease-in-out;
+
+        /* كروت متقدمة مع إضاءة موضعية Spotlight */
+        .card-3d {
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .spotlight-overlay {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.18), transparent 70%);
+            z-index: 1;
+        }
+
+        .card-3d:hover .spotlight-overlay {
+            opacity: 1;
+        }
+
+        /* حركة الدخول الناعمة */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* تأثير التوهج المتموج */
+        @keyframes aurora {
+            0%, 100% { transform: scale(1) translate(0%, 0%); opacity: 0.2; }
+            50% { transform: scale(1.12) translate(-3%, 4%); opacity: 0.32; }
+        }
+        .animate-aurora {
+            animation: aurora 10s infinite alternate ease-in-out;
         }
     </style>
 </head>
-<body class="bg-[#0b0d13] text-white min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
+<body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-600 selection:text-white cyber-grid">
 
-    <!-- عناصر مؤشر الماوس المخصص -->
+    <!-- مؤشرات الماوس التفاعلية -->
     <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
     <div id="cursor-outline" class="cursor-outline hidden md:block"></div>
 
-    <!-- الإضاءة الخلفية الجمالية -->
-    <div class="fixed top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-blue-600/20 blur-[130px] rounded-full pointer-events-none animate-pulse-slow"></div>
-    <div class="fixed bottom-0 right-[-100px] w-[450px] h-[350px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+    <!-- تأثيرات التوهج المحيطي -->
+    <div class="fixed top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-sky-500/15 blur-[140px] rounded-full pointer-events-none animate-aurora"></div>
+    <div class="fixed bottom-0 right-[-150px] w-[500px] h-[450px] bg-indigo-600/10 blur-[150px] rounded-full pointer-events-none"></div>
 
     <!-- الهيدر واللوجو -->
-    <header class="w-full pt-8 pb-4 px-6 flex flex-col items-center justify-center relative z-10">
-        <div class="flex items-center gap-3 bg-white/[0.03] border border-white/10 px-5 py-2.5 rounded-2xl backdrop-blur-md shadow-lg shadow-black/20">
-            <!-- أيقونة فيسبوك كلاسيكية -->
-            <div class="w-10 h-10 rounded-xl bg-[#1877F2] flex items-center justify-center text-white font-bold text-2xl shadow-md shadow-[#1877F2]/40 select-none">
+    <header class="w-full pt-9 pb-4 px-6 flex flex-col items-center justify-center relative z-10">
+        <div class="flex items-center gap-3.5 bg-white/[0.03] border border-white/10 hover:border-white/20 px-6 py-2.5 rounded-2xl backdrop-blur-xl shadow-2xl shadow-black/40 transition-all duration-300 hover:scale-[1.02]">
+            <!-- أيقونة فيسبوك كلاسيكية متوهجة -->
+            <div class="w-11 h-11 rounded-xl bg-[#1877F2] flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-[#1877F2]/40 select-none">
                 f
             </div>
             <div class="flex flex-col">
-                <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
+                <span class="text-xl sm:text-2xl font-black tracking-wider bg-gradient-to-r from-white via-slate-100 to-sky-300 bg-clip-text text-transparent">
                     Trend One Media
                 </span>
             </div>
@@ -94,19 +142,19 @@
     </header>
 
     <!-- المحتوى الرئيسي -->
-    <main class="w-full max-w-5xl mx-auto px-4 py-6 flex-1 flex flex-col items-center relative z-10">
+    <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-1 flex flex-col items-center relative z-10">
         
         <!-- الترويسة الرئيسية مع النقاط المتحركة -->
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
-                <span class="relative flex h-2 w-2">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs sm:text-sm font-semibold mb-5 shadow-sm shadow-emerald-500/10">
+                <span class="relative flex h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                 </span>
                 شبكة الصفحات الرسمية الأكثر تفاعلاً
             </div>
 
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2 leading-relaxed">
                 <!-- 3 نقط خضراء في بداية كلمة صفحات -->
                 <span class="inline-flex items-center gap-1.5 ml-1">
                     <span class="relative flex h-2 w-2">
@@ -124,7 +172,7 @@
                 </span>
                 <span>صفحات ميديا رائدة تصل إلى</span>
                 <!-- كلمة الملايين مع 3 نقط خضراء في نهايتها -->
-                <span class="whitespace-nowrap inline-flex items-center gap-1.5 text-blue-400">
+                <span class="whitespace-nowrap inline-flex items-center gap-1.5 text-sky-400">
                     الملايين
                     <span class="inline-flex items-center gap-1.5 mr-1">
                         <span class="relative flex h-2 w-2">
@@ -144,109 +192,120 @@
             </h1>
         </div>
 
-        <!-- شبكة بطاقات الصفحات -->
+        <!-- شبكة بطاقات الصفحات بتأثير الـ 3D والـ Spotlight -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 w-full">
             
             <!-- 1. Nostalgia -->
             <a href="https://www.facebook.com/0NOSTALGIA?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/Nostalgia.jpg" alt="Nostalgia" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=Nostalgia&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 50ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/Nostalgia.jpg" alt="Nostalgia" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Nostalgia&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">Nostalgia</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">Nostalgia</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
             <!-- 2. Creative -->
             <a href="https://www.facebook.com/CREATIVEMEMES02?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/Creative.jpg" alt="Creative" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=Creative&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 100ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/Creative.jpg" alt="Creative" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Creative&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">Creative</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">Creative</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
             <!-- 3. Ex. -->
             <a href="https://www.facebook.com/Ex.fans?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/ex.jpg" alt="Ex." class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=Ex&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 150ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/ex.jpg" alt="Ex." class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Ex&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">Ex.</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">Ex.</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
             <!-- 4. Toxic -->
             <a href="https://www.facebook.com/0Toxic0?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/toxic.jpg" alt="Toxic" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=Toxic&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 200ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/toxic.jpg" alt="Toxic" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Toxic&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">Toxic</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">Toxic</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
             <!-- 5. C r e a t i v e -->
             <a href="https://www.facebook.com/creativeMems01?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/cr.jpg" alt="C r e a t i v e" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=Cr&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 250ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/cr.jpg" alt="C r e a t i v e" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Cr&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">C r e a t i v e</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">C r e a t i v e</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
             <!-- 6. IQ -->
             <a href="https://www.facebook.com/IQMEMES0?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/iq.jpg" alt="IQ" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=IQ&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 300ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/iq.jpg" alt="IQ" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=IQ&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">IQ</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">IQ</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
             <!-- 7. Puzzle -->
             <a href="https://www.facebook.com/Puzzle2020?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/puzzle.jpg" alt="Puzzle" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=Puzzle&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 350ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/puzzle.jpg" alt="Puzzle" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Puzzle&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">Puzzle</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">Puzzle</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
             <!-- 8. Outside. -->
             <a href="https://www.facebook.com/outside.Officiall?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" 
-               class="group relative bg-[#131720]/80 border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/10">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-blue-500 transition-colors p-1 bg-black/30 mb-3">
-                    <img src="https://x-media.vercel.app/img/outside.jpg" alt="Outside." class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://ui-avatars.com/api/?name=Outside&background=1877F2&color=fff&size=150'">
+               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 400ms;">
+                <div class="spotlight-overlay"></div>
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                    <img src="https://x-media.vercel.app/img/outside.jpg" alt="Outside." class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Outside&background=1877F2&color=fff&size=150'">
                 </div>
-                <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors mb-2">Outside.</h3>
-                <span class="w-full py-1.5 rounded-xl bg-blue-600/10 text-blue-400 text-xs font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all">زيارة الصفحة</span>
+                <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">Outside.</h3>
+                <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
         </div>
     </main>
 
-    <!-- زر التيليجرام العائم -->
+    <!-- زر التيليجرام العائم المتوهج -->
     <aside class="fixed bottom-6 left-6 z-50">
         <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" 
-           class="flex items-center justify-center w-14 h-14 rounded-full bg-[#24A1DE] text-white shadow-xl shadow-[#24A1DE]/40 hover:scale-110 active:scale-95 transition-all duration-300">
-            <!-- أيقونة تيليجرام -->
-            <svg class="w-7 h-7 fill-current -translate-x-0.5" viewBox="0 0 24 24">
+           class="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#24A1DE] text-white shadow-2xl shadow-[#24A1DE]/40 hover:scale-110 active:scale-95 transition-all duration-300 group">
+            <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-300 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-sky-400"></span>
+            </span>
+            <svg class="w-7 h-7 fill-current -translate-x-0.5 group-hover:-rotate-12 transition-transform duration-300" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
             </svg>
         </a>
     </aside>
 
     <!-- الفوتر -->
-    <footer class="w-full border-t border-white/5 py-6 px-4 text-center text-sm text-slate-500 relative z-10">
-        <p>جميع الحقوق محفوظة لـ © HAMED</p>
+    <footer class="w-full border-t border-white/5 py-7 px-4 text-center text-sm text-slate-400 relative z-10 backdrop-blur-md bg-black/20">
+        <p class="font-medium tracking-wide">جميع الحقوق محفوظة لـ © HAMED</p>
     </footer>
 
-    <!-- سكريبت حركة الماوس التفاعلية -->
+    <!-- سكريبت حركة الماوس والمؤثرات ثلاثية الأبعاد -->
     <script>
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
@@ -258,15 +317,13 @@
             mouseX = e.clientX;
             mouseY = e.clientY;
             
-            // تحريك النقطة المركزية مباشرة
             dot.style.left = `${mouseX}px`;
             dot.style.top = `${mouseY}px`;
         });
 
-        // تحريك الحلقة الخارجية بنعومة (Smooth Lerp)
         function animateCursor() {
-            outlineX += (mouseX - outlineX) * 0.15;
-            outlineY += (mouseY - outlineY) * 0.15;
+            outlineX += (mouseX - outlineX) * 0.16;
+            outlineY += (mouseY - outlineY) * 0.16;
 
             outline.style.left = `${outlineX}px`;
             outline.style.top = `${outlineY}px`;
@@ -275,14 +332,36 @@
         }
         animateCursor();
 
-        // تمدد المؤشر عند الوقوف على العناصر التفاعلية
+        // تمدد حلقة الماوس عند التفاعل
         const interactiveElements = document.querySelectorAll('a, button');
         interactiveElements.forEach((el) => {
-            el.addEventListener('mouseenter', () => {
-                outline.classList.add('cursor-hover');
+            el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
+        });
+
+        // تأثير الإمالة ثلاثية الأبعاد 3D Tilt و الـ Spotlight
+        const cards = document.querySelectorAll('.card-3d');
+        cards.forEach((card) => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // تحديث موضع إضاءة الـ Spotlight
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
+                // حساب زاوية الإمالة
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
             });
-            el.addEventListener('mouseleave', () => {
-                outline.classList.remove('cursor-hover');
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
             });
         });
     </script>
