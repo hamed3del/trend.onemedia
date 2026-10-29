@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend One Media | HAMED</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #0b0e14;
+            color: #f1f5f9;
+        }
+        .glass-header {
+            background: rgba(11, 14, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .page-card {
+            background: #121722;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .page-card:hover {
+            transform: translateY(-5px);
+            border-color: #06b6d4;
+            box-shadow: 0 12px 30px -8px rgba(6, 182, 212, 0.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-black">
 
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 glass-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[#4267B2] flex items-center justify-center text-white text-2xl shadow-lg shadow-[#4267B2]/30 hover:scale-105 transition-transform">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wide text-white block leading-none">TREND ONE</span>
+                    <span class="text-[10px] font-bold text-cyan-400 tracking-wider">MEDIA NETWORK</span>
+                </div>
+            </div>
+
+            <!-- Header Action -->
+            <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-[#229ED9] hover:bg-[#1b8bc2] text-white font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md shadow-[#229ED9]/25 hover:scale-105 active:scale-95">
+                <i class="fa-brands fa-telegram text-base"></i>
+                <span>تواصل تيليجرام</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
+        
+        <!-- Hero Section -->
+        <section class="text-center py-6 sm:py-10 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-4">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>شبكة الصفحات الرسمية الأكثر تفاعلاً</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
+                <span class="whitespace-nowrap"><span class="inline-flex items-center gap-1.5 ml-2 align-middle"><span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping"></span><span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping [animation-delay:200ms]"></span><span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping [animation-delay:400ms]"></span></span>صفحات</span> ميديا رائدة تصل إلى <span class="whitespace-nowrap"><span class="text-cyan-400 underline decoration-cyan-500/40">الملايين</span><span class="inline-flex items-center gap-1.5 mr-2 align-middle"><span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping"></span><span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping [animation-delay:200ms]"></span><span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping [animation-delay:400ms]"></span></span></span>
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+                تصفح قائمة صفحاتنا الرسمية الموثقة على فيسبوك، أو تواصل معنا مباشرة عبر تيليجرام لبدء حملتك الإعلانية.
+            </p>
+        </section>
+
+        <!-- Channels Grid (Rendered directly in HTML for 100% Reliability) -->
+        <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6" id="cards-container">
+            
+            <!-- Page 1: Nostalgia -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="nostalgia نوستالجيا">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/Nostalgia.jpg" alt="Nostalgia" onerror="this.src='https://placehold.co/150x150/121722/cyan?text=Nostalgia';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">Nostalgia</h2>
+                <a href="https://www.facebook.com/0NOSTALGIA?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+            <!-- Page 2: Creative -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="creative كرييتف ابداع">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/Creative.jpg" alt="Creative" onerror="this.src='https://placehold.co/150x150/121722/cyan?text=Creative';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">Creative</h2>
+                <a href="https://www.facebook.com/CREATIVEMEMES02?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+            <!-- Page 3: Ex. -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="ex اكس">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/ex.jpg" alt="Ex." onerror="this.src='https://placehold.co/150x150/121722/cyan?text=Ex.';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">Ex.</h2>
+                <a href="https://www.facebook.com/Ex.fans?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+            <!-- Page 4: Toxic -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="toxic توكسيك">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/toxic.jpg" alt="Toxic" onerror="this.src='https://placehold.co/150x150/121722/cyan?text=Toxic';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">Toxic</h2>
+                <a href="https://www.facebook.com/0Toxic0?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+            <!-- Page 5: C r e a t i v e -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="c r e a t i v e كرييتف ميمز">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/cr.jpg" alt="C r e a t i v e" onerror="this.src='https://placehold.co/150x150/121722/cyan?text=Creative';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">C r e a t i v e</h2>
+                <a href="https://www.facebook.com/creativeMems01?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+            <!-- Page 6: IQ -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="iq ذكاء">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/iq.jpg" alt="IQ" onerror="this.src='https://placehold.co/150x150/121722/cyan?text=IQ';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">IQ</h2>
+                <a href="https://www.facebook.com/IQMEMES0?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+            <!-- Page 7: Puzzle -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="puzzle بازل الغاز">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/puzzle.jpg" alt="Puzzle" onerror="this.src='https://placehold.co/150x150/121722/cyan?text=Puzzle';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">Puzzle</h2>
+                <a href="https://www.facebook.com/Puzzle2020?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+            <!-- Page 8: Outside. -->
+            <div class="page-card rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center relative group" data-name="outside اوت سايد خروجات">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 to-purple-600 mb-3 group-hover:scale-105 transition-transform">
+                    <img src="https://x-media.vercel.app/img/outside.jpg" alt="Outside." onerror="this.src='https://placehold.co/150x150/121722/cyan?text=Outside';" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-white mb-3">Outside.</h2>
+                <a href="https://www.facebook.com/outside.Officiall?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2] text-[#4294ff] hover:text-white border border-[#1877F2]/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5 mb-2">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>زيارة الصفحة</span>
+                </a>
+                <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-[11px] font-semibold transition-all flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-telegram text-[#229ED9]"></i>
+                    <span>طلب إعلان</span>
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Floating Telegram Quick Button -->
+    <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" title="تواصل عبر تيليجرام" class="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-[#229ED9] hover:bg-[#1b8bc2] text-white flex items-center justify-center text-2xl shadow-2xl shadow-[#229ED9]/50 hover:scale-110 active:scale-95 transition-all">
+        <i class="fa-brands fa-telegram"></i>
+    </a>
+
+    <!-- Footer with Requested Copyright -->
+    <footer class="border-t border-white/5 bg-[#080a0f] py-6 px-4 mt-12 text-center">
+        <div class="max-w-7xl mx-auto flex items-center justify-center text-xs text-slate-400">
+            <div class="font-bold text-white">
+                جميع الحقوق محفوظة لـ &copy; HAMED
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
