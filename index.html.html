@@ -59,7 +59,7 @@
             backdrop-filter: blur(3px);
         }
 
-        /* حركة سريعة ومتوازنة لأعمدة الخلفية */
+        /* حركة سريعة ومستمرة لأعمدة الخلفية */
         @keyframes scrollUp {
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
@@ -70,16 +70,16 @@
             100% { transform: translateY(0); }
         }
 
-        .marquee-col-up-fast {
-            animation: scrollUp 14s linear infinite;
+        .marquee-col-1 {
+            animation: scrollUp 11s linear infinite;
         }
 
-        .marquee-col-down-fast {
-            animation: scrollDown 16s linear infinite;
+        .marquee-col-2 {
+            animation: scrollDown 13s linear infinite;
         }
 
-        .marquee-col-mid-fast {
-            animation: scrollUp 18s linear infinite;
+        .marquee-col-3 {
+            animation: scrollUp 12s linear infinite;
         }
 
         /* كروت متقدمة مع إضاءة موضعية Spotlight */
@@ -144,64 +144,99 @@
 </head>
 <body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
-    <!-- خلفية صور الصفحات المتحركة بسرعة ووضوح عالي -->
+    <!-- خلفية تشمل الـ 12 صورة كاملة في كل الأعمدة مع حركة سريعة وواضحة -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-60">
-        <div class="absolute inset-0 flex justify-between gap-4 md:gap-8 px-2 md:px-6 -rotate-6 scale-110">
+        <div class="absolute inset-0 flex justify-between gap-3 md:gap-6 px-2 md:px-6 -rotate-6 scale-110">
             
-            <!-- العمود 1: (The Lady, S O N G, Family, Flafilo) -->
-            <div class="flex flex-col gap-6 marquee-col-up-fast flex-1">
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="The Lady">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="S O N G">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Family">
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Flafilo">
-                <!-- تكرار للحركة الانسيابية الدائرية -->
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="The Lady">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="S O N G">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Family">
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Flafilo">
+            <!-- العمود 1: يضم الـ 12 صورة كاملة متحركة لأعلى -->
+            <div class="flex flex-col gap-5 marquee-col-1 flex-1">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <!-- تكرار للحركة المستمرة السلسة -->
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
             </div>
 
-            <!-- العمود 2: (Black Rose, Muffin, VS .Memes, Surgery) -->
-            <div class="flex flex-col gap-6 marquee-col-down-fast flex-1">
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Black Rose">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Muffin">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="VS .Memes">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Surgery">
+            <!-- العمود 2: يضم الـ 12 صورة بترتيب عكسي متحركة لأسفل -->
+            <div class="flex flex-col gap-5 marquee-col-2 flex-1">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
                 <!-- تكرار -->
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Black Rose">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Muffin">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="VS .Memes">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Surgery">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
             </div>
 
-            <!-- العمود 3: (Fav memes, Views, هيلبْولوجى, Thoughts) -->
-            <div class="flex flex-col gap-6 marquee-col-mid-fast flex-1 hidden sm:flex">
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Fav memes">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Views">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Helpology">
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Thoughts">
+            <!-- العمود 3: يضم الـ 12 صورة بتوزيع متنوع ومتحرك لأعلى -->
+            <div class="flex flex-col gap-5 marquee-col-3 flex-1">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
                 <!-- تكرار -->
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Fav memes">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Views">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Helpology">
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Thoughts">
-            </div>
-
-            <!-- العمود 4: للشاشات الكبيرة (تشكيلة من كل المجموعات) -->
-            <div class="flex flex-col gap-6 marquee-col-down-fast flex-1 hidden md:flex">
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="The Lady">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Muffin">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Helpology">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="VS .Memes">
-                <!-- تكرار -->
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="The Lady">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Muffin">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="Helpology">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-100" alt="VS .Memes">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
             </div>
         </div>
 
-        <!-- تراكب ناعم للتباين بدون حجب الصور -->
+        <!-- تراكب التباين الخفيف جداً -->
         <div class="absolute inset-0 bg-[#07090e]/30 backdrop-blur-[0.5px]"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-[#07090e]"></div>
     </div>
@@ -214,10 +249,6 @@
     <!-- مؤشرات الماوس التفاعلية[cite: 4] -->
     <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
     <div id="cursor-outline" class="cursor-outline hidden md:block"></div>
-
-    <!-- تأثيرات التوهج المحيطي[cite: 4] -->
-    <div class="fixed top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-sky-500/10 blur-[140px] rounded-full pointer-events-none"></div>
-    <div class="fixed bottom-0 right-[-150px] w-[500px] h-[450px] bg-indigo-600/10 blur-[150px] rounded-full pointer-events-none"></div>
 
     <!-- الهيدر واللوجو[cite: 4] -->
     <header class="w-full pt-9 pb-3 px-6 flex flex-col items-center justify-center relative z-10 text-center">
