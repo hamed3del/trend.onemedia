@@ -134,6 +134,21 @@
             margin-right: 4px;
             animation: blink 0.8s infinite;
         }
+
+        /* توهج مستطيل التيليجرام */
+        @keyframes telegramGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(36, 161, 222, 0.3), 0 0 30px rgba(36, 161, 222, 0.15), inset 0 0 10px rgba(36, 161, 222, 0.2);
+                border-color: rgba(36, 161, 222, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(36, 161, 222, 0.6), 0 0 50px rgba(36, 161, 222, 0.3), inset 0 0 16px rgba(36, 161, 222, 0.35);
+                border-color: rgba(56, 189, 248, 0.95);
+            }
+        }
+        .telegram-btn-glow {
+            animation: telegramGlow 2.5s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-600 selection:text-white cyber-grid">
@@ -164,10 +179,28 @@
             </div>
         </div>
 
-        <!-- جملة الكتابة التلقائية المباشرة -->
-        <div class="mt-4 min-h-[30px] flex items-center justify-center px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm shadow-inner max-w-xl">
+        <!-- جملة الكتابة التلقائية الأولى -->
+        <div class="mt-4 min-h-[32px] flex items-center justify-center px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm shadow-inner max-w-xl">
             <span id="typewriter-text" class="text-xs sm:text-sm md:text-base font-semibold text-slate-300 tracking-wide"></span>
-            <span class="type-cursor text-sky-400 font-bold text-sm sm:text-base">|</span>
+            <span id="cursor1" class="type-cursor text-sky-400 font-bold text-sm sm:text-base">|</span>
+        </div>
+
+        <!-- السطر الثاني: جملة الإعلان المكتوبة + مستطيل تيليجرام المتوهج -->
+        <div id="cta-container" class="mt-3 flex flex-wrap items-center justify-center gap-3 opacity-0 transition-opacity duration-500">
+            <div class="flex items-center text-xs sm:text-sm md:text-base font-bold text-sky-300">
+                <span id="typewriter-subtext"></span>
+                <span id="cursor2" class="type-cursor text-sky-400 font-bold text-sm sm:text-base hidden">|</span>
+            </div>
+
+            <!-- زر التيليجرام المستطيل المضيء -->
+            <a id="telegram-box-btn" href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" 
+               class="telegram-btn-glow relative inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#179cde]/30 to-[#0e78ab]/40 border border-[#24A1DE] text-white text-xs sm:text-sm font-extrabold tracking-wide backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 transform translate-y-1">
+                <svg class="w-4 h-4 fill-[#24A1DE] drop-shadow-[0_0_8px_#38bdf8]" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                </svg>
+                <span>Telegram</span>
+                <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+            </a>
         </div>
     </header>
 
@@ -395,25 +428,49 @@
 
     <!-- السكريبتات -->
     <script>
-        // تأثير الكتابة التلقائية (Typewriter Effect)
-        const textToType = "لو عايز توصل لهدف معين احنا بنقدملك ده من خلال الصفحات الاكثر تفاعلاً";
-        const typewriterEl = document.getElementById('typewriter-text');
-        let charIndex = 0;
+        // تأثير الكتابة التلقائية المتعاقبة (الجملة الأولى ثم الثانية والزر المضيء)
+        const text1 = "لو عايز توصل لهدف معين احنا بنقدملك ده من خلال الصفحات الاكثر تفاعلاً";
+        const text2 = "للاعلان علي الصفحات تقدر تتواصل معنا من هنا";
 
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                typewriterEl.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 45); // سرعة الكتابة
+        const typewriterEl1 = document.getElementById('typewriter-text');
+        const cursor1 = document.getElementById('cursor1');
+        const typewriterEl2 = document.getElementById('typewriter-subtext');
+        const cursor2 = document.getElementById('cursor2');
+        const ctaContainer = document.getElementById('cta-container');
+        const telegramBtn = document.getElementById('telegram-box-btn');
+
+        let index1 = 0;
+        let index2 = 0;
+
+        function typeLine1() {
+            if (index1 < text1.length) {
+                typewriterEl1.textContent += text1.charAt(index1);
+                index1++;
+                setTimeout(typeLine1, 38);
+            } else {
+                cursor1.style.display = 'none';
+                ctaContainer.classList.remove('opacity-0');
+                cursor2.classList.remove('hidden');
+                setTimeout(typeLine2, 350);
             }
         }
 
-        // بدء الكتابة بعد نصف ثانية من تحميل الصفحة
+        function typeLine2() {
+            if (index2 < text2.length) {
+                typewriterEl2.textContent += text2.charAt(index2);
+                index2++;
+                setTimeout(typeLine2, 42);
+            } else {
+                // إظهار زر التيليجرام المستطيل المتوهج بنعومة
+                telegramBtn.classList.remove('opacity-0', 'translate-y-1');
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(typeWriter, 500);
+            setTimeout(typeLine1, 500);
         });
 
-        // إعدادات وتشغيل الصوت التلقائي مع أول حركة
+        // تشغيل صوت القرآن التلقائي مع أول تفاعل
         const audio = document.getElementById('quranAudio');
         const toggleAudioBtn = document.getElementById('toggleAudioBtn');
         const soundBars = document.getElementById('soundBars').children;
@@ -445,12 +502,10 @@
             }
         }
 
-        // مراقبة أول حركة أو لمس
         ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
             window.addEventListener(evt, playQuranInstantly, { passive: true })
         );
 
-        // محاولة تشغيل صامتة مبدئية
         window.addEventListener('DOMContentLoaded', () => {
             audio.play().then(() => {
                 hasTriggered = true;
@@ -458,7 +513,6 @@
             }).catch(() => {});
         });
 
-        // زر التحكم اليدوي
         toggleAudioBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             hasTriggered = true;
@@ -470,7 +524,7 @@
             }
         });
 
-        // حركة مؤشر الماوس
+        // مؤشر الماوس
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
         let mouseX = 0, mouseY = 0;
@@ -498,7 +552,7 @@
             el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
         });
 
-        // تأثير الـ 3D والإضاءة الموضعية Spotlight
+        // إمالة 3D وتأثير Spotlight للكروت
         const cards = document.querySelectorAll('.card-3d');
         cards.forEach((card) => {
             card.addEventListener('mousemove', (e) => {
