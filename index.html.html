@@ -59,12 +59,27 @@
             backdrop-filter: blur(3px);
         }
 
-        /* شبكة خلفية ناعمة */
-        .cyber-grid {
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
+        /* حركة أعمدة الصور الخلفية المتحركة */
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        @keyframes scrollDown {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); }
+        }
+
+        .marquee-col-up {
+            animation: scrollUp 42s linear infinite;
+        }
+
+        .marquee-col-down {
+            animation: scrollDown 48s linear infinite;
+        }
+
+        .marquee-col-slow {
+            animation: scrollUp 55s linear infinite;
         }
 
         /* كروت متقدمة مع إضاءة موضعية Spotlight */
@@ -106,24 +121,6 @@
             animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* تموج الإضاءة الخلفية */
-        @keyframes aurora {
-            0%, 100% { transform: scale(1) translate(0%, 0%); opacity: 0.2; }
-            50% { transform: scale(1.12) translate(-3%, 4%); opacity: 0.32; }
-        }
-        .animate-aurora {
-            animation: aurora 10s infinite alternate ease-in-out;
-        }
-
-        /* حركة موجات الصوت */
-        @keyframes soundWave {
-            0%, 100% { height: 4px; }
-            50% { height: 16px; }
-        }
-        .wave-bar {
-            animation: soundWave 1.2s infinite ease-in-out;
-        }
-
         /* وميض مؤشر الكتابة التلقائية */
         @keyframes blink {
             0%, 100% { opacity: 1; }
@@ -134,26 +131,112 @@
             margin-right: 4px;
             animation: blink 0.8s infinite;
         }
+
+        /* توهج زر التيليجرام */
+        @keyframes telegramGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(36, 161, 222, 0.3), 0 0 30px rgba(36, 161, 222, 0.15), inset 0 0 10px rgba(36, 161, 222, 0.2);
+                border-color: rgba(36, 161, 222, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(36, 161, 222, 0.6), 0 0 50px rgba(36, 161, 222, 0.3), inset 0 0 16px rgba(36, 161, 222, 0.35);
+                border-color: rgba(56, 189, 248, 0.95);
+            }
+        }
+        .telegram-btn-glow {
+            animation: telegramGlow 2.5s infinite ease-in-out;
+        }
+
+        /* حركة موجات الصوت */
+        @keyframes soundWave {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
+        .wave-bar {
+            animation: soundWave 1.2s infinite ease-in-out;
+        }
     </style>
 </head>
-<body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-600 selection:text-white cyber-grid">
+<body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
-    <!-- ملف الصوت للشيخ مشاري راشد العفاسي -->
+    <!-- خلفية صور الصفحات المتحركة سينمائياً -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-25">
+        <div class="absolute inset-0 flex justify-between gap-4 md:gap-8 px-2 md:px-6 -rotate-6 scale-110">
+            
+            <!-- العمود 1: يتحرك لأعلى -->
+            <div class="flex flex-col gap-6 marquee-col-up flex-1">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <!-- تكرار للحركة المستمرة السلسة -->
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+            </div>
+
+            <!-- العمود 2: يتحرك لأسفل -->
+            <div class="flex flex-col gap-6 marquee-col-down flex-1">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <!-- تكرار -->
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+            </div>
+
+            <!-- العمود 3: يتحرك بنعومة لأعلى -->
+            <div class="flex flex-col gap-6 marquee-col-slow flex-1 hidden sm:flex">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <!-- تكرار -->
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+            </div>
+
+            <!-- العمود 4: للشاشات الكبيرة -->
+            <div class="flex flex-col gap-6 marquee-col-down flex-1 hidden md:flex">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <!-- تكرار -->
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-2xl filter brightness-90" alt="bg">
+            </div>
+        </div>
+
+        <!-- طبقات الفلترة الداكنة والبلور للوضوح -->
+        <div class="absolute inset-0 bg-[#07090e]/85 backdrop-blur-[6px]"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-[#07090e]"></div>
+    </div>
+
+    <!-- ملف الصوت للشيخ مشاري راشد العفاسي[cite: 4] -->
     <audio id="quranAudio" loop preload="auto">
         <source src="https://server8.mp3quran.net/afs/001.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- مؤشرات الماوس التفاعلية -->
+    <!-- مؤشرات الماوس التفاعلية[cite: 4] -->
     <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
     <div id="cursor-outline" class="cursor-outline hidden md:block"></div>
 
-    <!-- تأثيرات التوهج المحيطي -->
-    <div class="fixed top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-sky-500/15 blur-[140px] rounded-full pointer-events-none animate-aurora"></div>
-    <div class="fixed bottom-0 right-[-150px] w-[500px] h-[450px] bg-indigo-600/10 blur-[150px] rounded-full pointer-events-none"></div>
+    <!-- تأثيرات التوهج المحيطي[cite: 4] -->
+    <div class="fixed top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-sky-500/15 blur-[140px] rounded-full pointer-events-none"></div>
+    <div class="fixed bottom-0 right-[-150px] w-[500px] h-[450px] bg-indigo-600/15 blur-[150px] rounded-full pointer-events-none"></div>
 
-    <!-- الهيدر واللوجو -->
+    <!-- الهيدر واللوجو[cite: 4] -->
     <header class="w-full pt-9 pb-3 px-6 flex flex-col items-center justify-center relative z-10 text-center">
-        <div class="flex items-center gap-3.5 bg-white/[0.03] border border-white/10 hover:border-white/20 px-6 py-2.5 rounded-2xl backdrop-blur-xl shadow-2xl shadow-black/40 transition-all duration-300 hover:scale-[1.02]">
+        <div class="flex items-center gap-3.5 bg-white/[0.04] border border-white/10 hover:border-white/20 px-6 py-2.5 rounded-2xl backdrop-blur-xl shadow-2xl shadow-black/60 transition-all duration-300 hover:scale-[1.02]">
             <div class="w-11 h-11 rounded-xl bg-[#1877F2] flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-[#1877F2]/40 select-none">
                 f
             </div>
@@ -164,19 +247,37 @@
             </div>
         </div>
 
-        <!-- جملة الكتابة التلقائية المباشرة -->
-        <div class="mt-4 min-h-[30px] flex items-center justify-center px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm shadow-inner max-w-xl">
+        <!-- جملة الكتابة التلقائية الأولى[cite: 4] -->
+        <div class="mt-4 min-h-[32px] flex items-center justify-center px-4 py-1.5 rounded-full bg-black/40 border border-white/10 backdrop-blur-md shadow-inner max-w-xl">
             <span id="typewriter-text" class="text-xs sm:text-sm md:text-base font-semibold text-slate-300 tracking-wide"></span>
-            <span class="type-cursor text-sky-400 font-bold text-sm sm:text-base">|</span>
+            <span id="cursor1" class="type-cursor text-sky-400 font-bold text-sm sm:text-base">|</span>
+        </div>
+
+        <!-- السطر الثاني: جملة الإعلان المكتوبة -->
+        <div id="subtext-container" class="mt-3 flex items-center justify-center text-xs sm:text-sm md:text-base font-bold text-sky-300 opacity-0 transition-opacity duration-300">
+            <span id="typewriter-subtext"></span>
+            <span id="cursor2" class="type-cursor text-sky-400 font-bold text-sm sm:text-base hidden">|</span>
+        </div>
+
+        <!-- السطر الثالث: مستطيل تيليجرام المتوهج بالأسفل في المنتصف -->
+        <div class="mt-3.5 flex justify-center w-full">
+            <a id="telegram-box-btn" href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" 
+               class="telegram-btn-glow relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-[#0b172a]/90 border border-[#24A1DE] text-white text-xs sm:text-sm font-extrabold tracking-wide backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none transform translate-y-2">
+                <svg class="w-4 h-4 fill-[#24A1DE] drop-shadow-[0_0_8px_#38bdf8]" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                </svg>
+                <span>تواصل معنا عبر Telegram</span>
+                <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+            </a>
         </div>
     </header>
 
-    <!-- المحتوى الرئيسي -->
+    <!-- المحتوى الرئيسي[cite: 4] -->
     <main class="w-full max-w-6xl mx-auto px-4 py-6 flex-1 flex flex-col items-center relative z-10">
         
-        <!-- الترويسة الرئيسية مع النقاط المتحركة -->
+        <!-- الترويسة الرئيسية مع النقاط المتحركة[cite: 4] -->
         <div class="text-center mb-12">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs sm:text-sm font-semibold mb-5 shadow-sm shadow-emerald-500/10">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs sm:text-sm font-semibold mb-5 shadow-sm shadow-emerald-500/10 backdrop-blur-md">
                 <span class="relative flex h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -184,8 +285,7 @@
                 شبكة الصفحات الرسمية الأكثر تفاعلاً
             </div>
 
-            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2 leading-relaxed">
-                <!-- 3 نقط خضراء في بداية كلمة صفحات -->
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2 leading-relaxed drop-shadow-md">
                 <span class="inline-flex items-center gap-1.5 ml-1">
                     <span class="relative flex h-2 w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -201,7 +301,6 @@
                     </span>
                 </span>
                 <span>صفحات ميديا رائدة تصل إلى</span>
-                <!-- كلمة الملايين مع 3 نقط خضراء في نهايتها -->
                 <span class="whitespace-nowrap inline-flex items-center gap-1.5 text-sky-400">
                     الملايين
                     <span class="inline-flex items-center gap-1.5 mr-1">
@@ -222,135 +321,135 @@
             </h1>
         </div>
 
-        <!-- شبكة بطاقات الصفحات بتأثير الـ 3D والـ Spotlight -->
+        <!-- شبكة بطاقات الصفحات بتأثير الـ 3D والـ Spotlight[cite: 4] -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 w-full">
             
-            <!-- 1. The Lady -->
+            <!-- 1. The Lady[cite: 4] -->
             <a href="https://www.facebook.com/profile.php?id=61558846910283" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 50ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 50ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" alt="The Lady" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=The+Lady&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">𝐓𝐡𝐞 𝐋𝐚𝐝𝐲</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 2. S O N G -->
+            <!-- 2. S O N G[cite: 4] -->
             <a href="http://facebook.com/So0NG" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 100ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 100ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" alt="S O N G" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=SONG&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">S O N G</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 3. F a m i l y -->
+            <!-- 3. F a m i l y[cite: 4] -->
             <a href="https://www.facebook.com/family.abcdafg" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 150ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 150ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" alt="F a m i l y" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Family&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">F a m i l y</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 4. Flafilo -->
+            <!-- 4. Flafilo[cite: 4] -->
             <a href="https://www.facebook.com/profile.php?id=100063805205916" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 200ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 200ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" alt="Flafilo" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Flafilo&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">𝐹𝓁𝒶𝒻𝒾𝓁𝑜</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 5. Black Rose -->
+            <!-- 5. Black Rose[cite: 4] -->
             <a href="https://www.facebook.com/onlyone11" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 250ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 250ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" alt="Black Rose" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Black+Rose&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">𝓑𝓵𝓪𝓬𝓴 𝓡𝓸𝓼𝓮</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 6. Muffin -->
+            <!-- 6. Muffin[cite: 4] -->
             <a href="https://www.facebook.com/profile.php?id=100088338304721" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 300ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 300ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" alt="Muffin" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Muffin&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">𝑀𝓊𝒻𝒻𝒾𝓃</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 7. VS .Memes -->
+            <!-- 7. VS .Memes[cite: 4] -->
             <a href="https://www.facebook.com/BlueTriangle.11.11" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 350ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 350ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" alt="VS .Memes" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=VS+Memes&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">VS .Memes</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 8. Surgery -->
+            <!-- 8. Surgery[cite: 4] -->
             <a href="https://www.facebook.com/f123ti" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 400ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 400ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" alt="Surgery" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Surgery&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">𝓢𝓾𝓻𝓰𝓮𝓻𝔂</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 9. Fav memes -->
+            <!-- 9. Fav memes[cite: 4] -->
             <a href="https://www.facebook.com/profile.php?id=100078871867072" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 450ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 450ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/kBz96jsH/image.jpg" alt="Fav memes" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Fav+Memes&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">Fav memes</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 10. V i e w s. -->
+            <!-- 10. V i e w s.[cite: 4] -->
             <a href="https://www.facebook.com/views.fans" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 500ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 500ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" alt="V i e w s." class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Views&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">V i e w s.</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 11. هيلبْولوجى -->
+            <!-- 11. هيلبْولوجى[cite: 4] -->
             <a href="https://www.facebook.com/Helpologyy" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 550ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 550ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" alt="هيلبْولوجى" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Helpology&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">”هيلبْولوجى“.</h3>
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 12. T h o u g h t s -->
+            <!-- 12. T h o u g h t s[cite: 4] -->
             <a href="https://www.facebook.com/Thooughts.fans" target="_blank" rel="noopener noreferrer" 
-               class="card-3d group relative bg-[#0f131c]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 600ms;">
+               class="card-3d group relative bg-[#0b0e17]/85 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-sky-500/20 overflow-hidden animate-fade-in" style="animation-delay: 600ms;">
                 <div class="spotlight-overlay"></div>
-                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/40 mb-3 shadow-inner">
+                <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/15 group-hover:border-sky-400 transition-colors duration-300 p-1 bg-black/50 mb-3 shadow-inner">
                     <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" alt="T h o u g h t s" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://ui-avatars.com/api/?name=Thoughts&background=1877F2&color=fff&size=150'">
                 </div>
                 <h3 class="relative z-10 font-bold text-base sm:text-lg text-white group-hover:text-sky-300 transition-colors mb-3">T h o u g h t s</h3>
@@ -360,11 +459,11 @@
         </div>
     </main>
 
-    <!-- أزرار التحكم العائمة -->
+    <!-- أزرار التحكم العائمة[cite: 4] -->
     
-    <!-- زر التحكم بالقرآن (يمين الشاشة بالأسفل) -->
+    <!-- زر التحكم بالقرآن (يمين الشاشة بالأسفل)[cite: 4] -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button id="toggleAudioBtn" class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#0f131c]/90 border border-emerald-500/40 text-emerald-400 shadow-xl shadow-black/40 backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300 group">
+        <button id="toggleAudioBtn" class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#0b0e17]/90 border border-emerald-500/40 text-emerald-400 shadow-xl shadow-black/50 backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300 group">
             <div id="soundBars" class="flex items-end gap-1 h-4">
                 <span class="w-1 bg-emerald-400 rounded-full h-2"></span>
                 <span class="w-1 bg-emerald-400 rounded-full h-3"></span>
@@ -374,7 +473,7 @@
         </button>
     </div>
 
-    <!-- زر التيليجرام العائم (يسار الشاشة بالأسفل) -->
+    <!-- زر التيليجرام العائم (يسار الشاشة بالأسفل)[cite: 4] -->
     <aside class="fixed bottom-6 left-6 z-50">
         <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" 
            class="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#24A1DE] text-white shadow-2xl shadow-[#24A1DE]/40 hover:scale-110 active:scale-95 transition-all duration-300 group">
@@ -388,32 +487,55 @@
         </a>
     </aside>
 
-    <!-- الفوتر -->
-    <footer class="w-full border-t border-white/5 py-7 px-4 text-center text-sm text-slate-400 relative z-10 backdrop-blur-md bg-black/20">
+    <!-- الفوتر[cite: 4] -->
+    <footer class="w-full border-t border-white/5 py-7 px-4 text-center text-sm text-slate-400 relative z-10 backdrop-blur-md bg-black/30">
         <p class="font-medium tracking-wide">جميع الحقوق محفوظة لـ © HAMED</p>
     </footer>
 
-    <!-- السكريبتات -->
+    <!-- السكريبتات[cite: 4] -->
     <script>
-        // تأثير الكتابة التلقائية (Typewriter Effect)
-        const textToType = "لو عايز توصل لهدف معين احنا بنقدملك ده من خلال الصفحات الاكثر تفاعلاً";
-        const typewriterEl = document.getElementById('typewriter-text');
-        let charIndex = 0;
+        // نصوص وتأثير الكتابة التلقائية المتعاقبة
+        const text1 = "لو عايز توصل لهدف معين احنا بنقدملك ده من خلال الصفحات الاكثر تفاعلاً";
+        const text2 = "للاعلان علي الصفحات تقدر تتواصل معنا من هنا";
 
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                typewriterEl.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 45); // سرعة الكتابة
+        const typewriterEl1 = document.getElementById('typewriter-text');
+        const cursor1 = document.getElementById('cursor1');
+        const typewriterEl2 = document.getElementById('typewriter-subtext');
+        const cursor2 = document.getElementById('cursor2');
+        const subtextContainer = document.getElementById('subtext-container');
+        const telegramBtn = document.getElementById('telegram-box-btn');
+
+        let index1 = 0;
+        let index2 = 0;
+
+        function typeLine1() {
+            if (index1 < text1.length) {
+                typewriterEl1.textContent += text1.charAt(index1);
+                index1++;
+                setTimeout(typeLine1, 35);
+            } else {
+                cursor1.style.display = 'none';
+                subtextContainer.classList.remove('opacity-0');
+                cursor2.classList.remove('hidden');
+                setTimeout(typeLine2, 250);
             }
         }
 
-        // بدء الكتابة بعد نصف ثانية من تحميل الصفحة
+        function typeLine2() {
+            if (index2 < text2.length) {
+                typewriterEl2.textContent += text2.charAt(index2);
+                index2++;
+                setTimeout(typeLine2, 18);
+            } else {
+                telegramBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(typeWriter, 500);
+            setTimeout(typeLine1, 400);
         });
 
-        // إعدادات وتشغيل الصوت التلقائي مع أول حركة
+        // تشغيل صوت القرآن التلقائي مع أول تفاعل[cite: 4]
         const audio = document.getElementById('quranAudio');
         const toggleAudioBtn = document.getElementById('toggleAudioBtn');
         const soundBars = document.getElementById('soundBars').children;
@@ -445,12 +567,10 @@
             }
         }
 
-        // مراقبة أول حركة أو لمس
         ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
             window.addEventListener(evt, playQuranInstantly, { passive: true })
         );
 
-        // محاولة تشغيل صامتة مبدئية
         window.addEventListener('DOMContentLoaded', () => {
             audio.play().then(() => {
                 hasTriggered = true;
@@ -458,7 +578,6 @@
             }).catch(() => {});
         });
 
-        // زر التحكم اليدوي
         toggleAudioBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             hasTriggered = true;
@@ -470,7 +589,7 @@
             }
         });
 
-        // حركة مؤشر الماوس
+        // مؤشر الماوس[cite: 4]
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
         let mouseX = 0, mouseY = 0;
@@ -498,7 +617,7 @@
             el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
         });
 
-        // تأثير الـ 3D والإضاءة الموضعية Spotlight
+        // إمالة 3D وتأثير Spotlight للكروت[cite: 4]
         const cards = document.querySelectorAll('.card-3d');
         cards.forEach((card) => {
             card.addEventListener('mousemove', (e) => {
