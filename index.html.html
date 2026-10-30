@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
 
-        /* تخصيص مؤشر الماوس */
+        /* تخصيص مؤشر الماوس الاحترافي */
         @media (pointer: fine) {
             body {
                 cursor: none;
@@ -25,41 +25,45 @@
         }
 
         .cursor-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background-color: #38bdf8;
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 12px #38bdf8, 0 0 24px #0284c7;
+            box-shadow: 0 0 10px #38bdf8, 0 0 20px #0284c7;
+            transition: transform 0.1s ease;
         }
 
         .cursor-outline {
-            width: 38px;
-            height: 38px;
-            border: 2px solid rgba(56, 189, 248, 0.45);
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid rgba(56, 189, 248, 0.65);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 99998;
             transform: translate(-50%, -50%);
-            transition: width 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                        height 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                        background-color 0.25s ease, 
-                        border-color 0.25s ease;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+            transition: width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        height 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        background-color 0.2s ease, 
+                        border-color 0.2s ease,
+                        box-shadow 0.2s ease;
         }
 
         .cursor-hover {
-            width: 58px;
-            height: 58px;
-            background-color: rgba(56, 189, 248, 0.12);
+            width: 52px;
+            height: 52px;
+            background-color: rgba(56, 189, 248, 0.08);
             border-color: #38bdf8;
-            backdrop-filter: blur(3px);
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.4);
+            backdrop-filter: blur(2px);
         }
 
-        /* حركة سريعة ومستمرة لأعمدة الخلفية */
+        /* حركة أعمدة الصور الخلفية المصغرة */
         @keyframes scrollUp {
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
@@ -71,15 +75,19 @@
         }
 
         .marquee-col-1 {
-            animation: scrollUp 11s linear infinite;
+            animation: scrollUp 14s linear infinite;
         }
 
         .marquee-col-2 {
-            animation: scrollDown 13s linear infinite;
+            animation: scrollDown 17s linear infinite;
         }
 
         .marquee-col-3 {
-            animation: scrollUp 12s linear infinite;
+            animation: scrollUp 15s linear infinite;
+        }
+
+        .marquee-col-4 {
+            animation: scrollDown 16s linear infinite;
         }
 
         /* كروت متقدمة مع إضاءة موضعية Spotlight */
@@ -144,113 +152,142 @@
 </head>
 <body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
-    <!-- خلفية تشمل الـ 12 صورة كاملة في كل الأعمدة مع حركة سريعة وواضحة -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-60">
-        <div class="absolute inset-0 flex justify-between gap-3 md:gap-6 px-2 md:px-6 -rotate-6 scale-110">
+    <!-- خلفية تشمل الـ 12 صورة بحجم مصغر وتوزيع سينمائي أنيق -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-55">
+        <div class="absolute inset-0 flex justify-center gap-3 sm:gap-5 md:gap-8 px-2 -rotate-6 scale-110">
             
-            <!-- العمود 1: يضم الـ 12 صورة كاملة متحركة لأعلى -->
-            <div class="flex flex-col gap-5 marquee-col-1 flex-1">
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <!-- تكرار للحركة المستمرة السلسة -->
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+            <!-- العمود 1: مصغر ومتحرك لأعلى -->
+            <div class="flex flex-col gap-3.5 marquee-col-1 flex-1 max-w-[110px] sm:max-w-[130px] md:max-w-[160px]">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <!-- تكرار -->
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
             </div>
 
-            <!-- العمود 2: يضم الـ 12 صورة بترتيب عكسي متحركة لأسفل -->
-            <div class="flex flex-col gap-5 marquee-col-2 flex-1">
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+            <!-- العمود 2: مصغر ومتحرك لأسفل -->
+            <div class="flex flex-col gap-3.5 marquee-col-2 flex-1 max-w-[110px] sm:max-w-[130px] md:max-w-[160px]">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
                 <!-- تكرار -->
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
             </div>
 
-            <!-- العمود 3: يضم الـ 12 صورة بتوزيع متنوع ومتحرك لأعلى -->
-            <div class="flex flex-col gap-5 marquee-col-3 flex-1">
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+            <!-- العمود 3: مصغر ومتحرك لأعلى -->
+            <div class="flex flex-col gap-3.5 marquee-col-3 flex-1 max-w-[110px] sm:max-w-[130px] md:max-w-[160px]">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
                 <!-- تكرار -->
-                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
-                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-2xl object-cover aspect-square shadow-xl" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+            </div>
+
+            <!-- العمود 4: مصغر ومتحرك لأسفل -->
+            <div class="flex flex-col gap-3.5 marquee-col-4 flex-1 max-w-[110px] sm:max-w-[130px] md:max-w-[160px]">
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <!-- تكرار -->
+                <img src="https://i.postimg.cc/0rzpdjxV/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Y4mHzQnr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Cd29mR8c/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/tYC7tmh3/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/Lhg1gWB0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cK6HyKD0/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/mPpLwLTn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/LnHmFYXr/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/cvtxFq6L/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/kBz96jsH/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/nsxyBNmn/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
+                <img src="https://i.postimg.cc/VrVZGhdh/image.jpg" class="w-full rounded-xl object-cover aspect-square shadow-md" alt="bg">
             </div>
         </div>
 
-        <!-- تراكب التباين الخفيف جداً -->
-        <div class="absolute inset-0 bg-[#07090e]/30 backdrop-blur-[0.5px]"></div>
+        <!-- تراكب ناعم للحفاظ على وضوح المحتوى الرئيسي -->
+        <div class="absolute inset-0 bg-[#07090e]/40 backdrop-blur-[0.5px]"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-[#07090e]"></div>
     </div>
 
-    <!-- ملف الصوت للشيخ مشاري راشد العفاسي[cite: 4] -->
+    <!-- ملف الصوت للشيخ مشاري راشد العفاسي[cite: 1] -->
     <audio id="quranAudio" loop preload="auto">
         <source src="https://server8.mp3quran.net/afs/001.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- مؤشرات الماوس التفاعلية[cite: 4] -->
+    <!-- مؤشرات الماوس النيون الحديثة والمتفاعلة -->
     <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
     <div id="cursor-outline" class="cursor-outline hidden md:block"></div>
 
-    <!-- الهيدر واللوجو[cite: 4] -->
+    <!-- الهيدر واللوجو[cite: 1] -->
     <header class="w-full pt-9 pb-3 px-6 flex flex-col items-center justify-center relative z-10 text-center">
         <div class="flex items-center gap-3.5 bg-black/60 border border-white/10 hover:border-white/20 px-6 py-2.5 rounded-2xl backdrop-blur-xl shadow-2xl shadow-black/80 transition-all duration-300 hover:scale-[1.02]">
             <div class="w-11 h-11 rounded-xl bg-[#1877F2] flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-[#1877F2]/40 select-none">
@@ -263,17 +300,17 @@
             </div>
         </div>
 
-        <!-- جملة الكتابة التلقائية المباشرة[cite: 4] -->
+        <!-- جملة الكتابة التلقائية المباشرة[cite: 1] -->
         <div class="mt-4 min-h-[32px] flex items-center justify-center px-5 py-2 rounded-full bg-black/60 border border-white/10 backdrop-blur-md shadow-2xl max-w-xl">
             <span id="typewriter-text" class="text-xs sm:text-sm md:text-base font-semibold text-slate-200 tracking-wide"></span>
             <span id="cursor1" class="type-cursor text-sky-400 font-bold text-sm sm:text-base">|</span>
         </div>
     </header>
 
-    <!-- المحتوى الرئيسي[cite: 4] -->
+    <!-- المحتوى الرئيسي[cite: 1] -->
     <main class="w-full max-w-6xl mx-auto px-4 py-6 flex-1 flex flex-col items-center relative z-10">
         
-        <!-- الترويسة الرئيسية مع النقاط المتحركة[cite: 4] -->
+        <!-- الترويسة الرئيسية مع النقاط المتحركة[cite: 1] -->
         <div class="text-center mb-12">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold mb-5 shadow-lg shadow-black/60 backdrop-blur-md">
                 <span class="relative flex h-2.5 w-2.5">
@@ -319,10 +356,10 @@
             </h1>
         </div>
 
-        <!-- شبكة بطاقات الصفحات بتأثير الـ 3D والـ Spotlight[cite: 4] -->
+        <!-- شبكة بطاقات الصفحات بتأثير الـ 3D والـ Spotlight[cite: 1] -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 w-full">
             
-            <!-- 1. The Lady[cite: 4] -->
+            <!-- 1. The Lady[cite: 1] -->
             <a href="https://www.facebook.com/profile.php?id=61558846910283" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 50ms;">
                 <div class="spotlight-overlay"></div>
@@ -333,7 +370,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 2. S O N G[cite: 4] -->
+            <!-- 2. S O N G[cite: 1] -->
             <a href="http://facebook.com/So0NG" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 100ms;">
                 <div class="spotlight-overlay"></div>
@@ -344,7 +381,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 3. F a m i l y[cite: 4] -->
+            <!-- 3. F a m i l y[cite: 1] -->
             <a href="https://www.facebook.com/family.abcdafg" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 150ms;">
                 <div class="spotlight-overlay"></div>
@@ -355,7 +392,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 4. Flafilo[cite: 4] -->
+            <!-- 4. Flafilo[cite: 1] -->
             <a href="https://www.facebook.com/profile.php?id=100063805205916" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 200ms;">
                 <div class="spotlight-overlay"></div>
@@ -366,7 +403,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 5. Black Rose[cite: 4] -->
+            <!-- 5. Black Rose[cite: 1] -->
             <a href="https://www.facebook.com/onlyone11" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 250ms;">
                 <div class="spotlight-overlay"></div>
@@ -377,7 +414,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 6. Muffin[cite: 4] -->
+            <!-- 6. Muffin[cite: 1] -->
             <a href="https://www.facebook.com/profile.php?id=100088338304721" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 300ms;">
                 <div class="spotlight-overlay"></div>
@@ -388,7 +425,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 7. VS .Memes[cite: 4] -->
+            <!-- 7. VS .Memes[cite: 1] -->
             <a href="https://www.facebook.com/BlueTriangle.11.11" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 350ms;">
                 <div class="spotlight-overlay"></div>
@@ -399,7 +436,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 8. Surgery[cite: 4] -->
+            <!-- 8. Surgery[cite: 1] -->
             <a href="https://www.facebook.com/f123ti" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 400ms;">
                 <div class="spotlight-overlay"></div>
@@ -410,7 +447,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 9. Fav memes[cite: 4] -->
+            <!-- 9. Fav memes[cite: 1] -->
             <a href="https://www.facebook.com/profile.php?id=100078871867072" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 450ms;">
                 <div class="spotlight-overlay"></div>
@@ -421,7 +458,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 10. V i e w s.[cite: 4] -->
+            <!-- 10. V i e w s.[cite: 1] -->
             <a href="https://www.facebook.com/views.fans" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 500ms;">
                 <div class="spotlight-overlay"></div>
@@ -432,7 +469,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 11. هيلبْولوجى[cite: 4] -->
+            <!-- 11. هيلبْولوجى[cite: 1] -->
             <a href="https://www.facebook.com/Helpologyy" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 550ms;">
                 <div class="spotlight-overlay"></div>
@@ -443,7 +480,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 12. T h o u g h t s[cite: 4] -->
+            <!-- 12. T h o u g h t s[cite: 1] -->
             <a href="https://www.facebook.com/Thooughts.fans" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 600ms;">
                 <div class="spotlight-overlay"></div>
@@ -457,9 +494,9 @@
         </div>
     </main>
 
-    <!-- أزرار التحكم العائمة[cite: 4] -->
+    <!-- أزرار التحكم العائمة[cite: 1] -->
     
-    <!-- زر التحكم بالقرآن (يمين الشاشة بالأسفل)[cite: 4] -->
+    <!-- زر التحكم بالقرآن (يمين الشاشة بالأسفل)[cite: 1] -->
     <div class="fixed bottom-6 right-6 z-50">
         <button id="toggleAudioBtn" class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#0b0e17]/90 border border-emerald-500/40 text-emerald-400 shadow-xl shadow-black/60 backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300 group">
             <div id="soundBars" class="flex items-end gap-1 h-4">
@@ -471,7 +508,7 @@
         </button>
     </div>
 
-    <!-- زر التيليجرام العائم (يسار الشاشة بالأسفل)[cite: 4] -->
+    <!-- زر التيليجرام العائم (يسار الشاشة بالأسفل)[cite: 1] -->
     <aside class="fixed bottom-6 left-6 z-50">
         <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" 
            class="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#24A1DE] text-white shadow-2xl shadow-[#24A1DE]/40 hover:scale-110 active:scale-95 transition-all duration-300 group">
@@ -485,14 +522,14 @@
         </a>
     </aside>
 
-    <!-- الفوتر[cite: 4] -->
+    <!-- الفوتر[cite: 1] -->
     <footer class="w-full border-t border-white/5 py-7 px-4 text-center text-sm text-slate-400 relative z-10 backdrop-blur-md bg-black/40">
         <p class="font-medium tracking-wide">جميع الحقوق محفوظة لـ © HAMED</p>
     </footer>
 
-    <!-- السكريبتات[cite: 4] -->
+    <!-- السكريبتات[cite: 1] -->
     <script>
-        // تأثير الكتابة التلقائية للجملة الواحدة[cite: 4]
+        // تأثير الكتابة التلقائية للجملة الواحدة[cite: 1]
         const textToType = "لو عايز توصل لهدف معين احنا بنقدملك ده من خلال الصفحات الاكثر تفاعلاً";
         const typewriterEl = document.getElementById('typewriter-text');
         let charIndex = 0;
@@ -509,7 +546,7 @@
             setTimeout(typeWriter, 500);
         });
 
-        // تشغيل صوت القرآن التلقائي مع أول تفاعل[cite: 4]
+        // تشغيل صوت القرآن التلقائي مع أول تفاعل[cite: 1]
         const audio = document.getElementById('quranAudio');
         const toggleAudioBtn = document.getElementById('toggleAudioBtn');
         const soundBars = document.getElementById('soundBars').children;
@@ -563,11 +600,11 @@
             }
         });
 
-        // مؤشر الماوس[cite: 4]
+        // حركة الماوس الاحترافية المتزامنة[cite: 1]
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
-        let mouseX = 0, mouseY = 0;
-        let outlineX = 0, outlineY = 0;
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let outlineX = mouseX, outlineY = mouseY;
 
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
@@ -577,8 +614,8 @@
         });
 
         function animateCursor() {
-            outlineX += (mouseX - outlineX) * 0.16;
-            outlineY += (mouseY - outlineY) * 0.16;
+            outlineX += (mouseX - outlineX) * 0.18;
+            outlineY += (mouseY - outlineY) * 0.18;
             outline.style.left = `${outlineX}px`;
             outline.style.top = `${outlineY}px`;
             requestAnimationFrame(animateCursor);
@@ -591,7 +628,7 @@
             el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
         });
 
-        // إمالة 3D وتأثير Spotlight للكروت[cite: 4]
+        // إمالة 3D وتأثير Spotlight للكروت[cite: 1]
         const cards = document.querySelectorAll('.card-3d');
         cards.forEach((card) => {
             card.addEventListener('mousemove', (e) => {
