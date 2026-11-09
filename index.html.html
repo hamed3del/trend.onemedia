@@ -62,6 +62,35 @@
             backdrop-filter: blur(2px);
         }
 
+        /* تأثير إضاءة ولمعان كلمة Trend One Media من الشمال إلى اليمين */
+        @keyframes shineLeftToRight {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .logo-shine-ltr {
+            background: linear-gradient(
+                90deg, 
+                #64748b 0%, 
+                #94a3b8 20%, 
+                #ffffff 45%, 
+                #38bdf8 55%, 
+                #ffffff 65%, 
+                #94a3b8 80%, 
+                #64748b 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineLeftToRight 3.2s linear infinite;
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.45));
+        }
+
         /* توهج شارات المتابعين الخضراء */
         @keyframes emeraldGlow {
             0%, 100% {
@@ -293,7 +322,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-[#07090e]"></div>
     </div>
 
-    <!-- ملف الصوت للشيخ مشاري راشد العفاسي[cite: 1] -->
+    <!-- ملف الصوت للشيخ مشاري راشد العفاسي -->
     <audio id="quranAudio" loop preload="auto">
         <source src="https://server8.mp3quran.net/afs/001.mp3" type="audio/mpeg">
     </audio>
@@ -302,30 +331,30 @@
     <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
     <div id="cursor-outline" class="cursor-outline hidden md:block"></div>
 
-    <!-- الهيدر واللوجو[cite: 1] -->
+    <!-- الهيدر واللوجو مع إضاءة من الشمال لليمين -->
     <header class="w-full pt-9 pb-3 px-6 flex flex-col items-center justify-center relative z-10 text-center">
         <div class="flex items-center gap-3.5 bg-black/60 border border-white/10 hover:border-white/20 px-6 py-2.5 rounded-2xl backdrop-blur-xl shadow-2xl shadow-black/80 transition-all duration-300 hover:scale-[1.02]">
             <div class="w-11 h-11 rounded-xl bg-[#1877F2] flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-[#1877F2]/40 select-none">
                 f
             </div>
             <div class="flex flex-col text-right">
-                <span class="text-xl sm:text-2xl font-black tracking-wider bg-gradient-to-r from-white via-slate-100 to-sky-300 bg-clip-text text-transparent">
+                <span class="logo-shine-ltr text-xl sm:text-2xl font-black tracking-wider select-none">
                     Trend One Media
                 </span>
             </div>
         </div>
 
-        <!-- جملة الكتابة التلقائية المباشرة[cite: 1] -->
+        <!-- جملة الكتابة التلقائية المباشرة -->
         <div class="mt-4 min-h-[32px] flex items-center justify-center px-5 py-2 rounded-full bg-black/60 border border-white/10 backdrop-blur-md shadow-2xl max-w-xl">
             <span id="typewriter-text" class="text-xs sm:text-sm md:text-base font-semibold text-slate-200 tracking-wide"></span>
             <span id="cursor1" class="type-cursor text-sky-400 font-bold text-sm sm:text-base">|</span>
         </div>
     </header>
 
-    <!-- المحتوى الرئيسي[cite: 1] -->
+    <!-- المحتوى الرئيسي -->
     <main class="w-full max-w-6xl mx-auto px-4 py-6 flex-1 flex flex-col items-center relative z-10">
         
-        <!-- الترويسة الرئيسية مع النقاط المتحركة[cite: 1] -->
+        <!-- الترويسة الرئيسية مع النقاط المتحركة -->
         <div class="text-center mb-12">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold mb-5 shadow-lg shadow-black/60 backdrop-blur-md">
                 <span class="relative flex h-2.5 w-2.5">
@@ -374,7 +403,7 @@
         <!-- شبكة بطاقات الصفحات بتأثير الـ 3D مع عداد المتابعين الأخضر المضيء -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 w-full">
             
-            <!-- 1. The Lady[cite: 1] -->
+            <!-- 1. The Lady -->
             <a href="https://www.facebook.com/profile.php?id=61558846910283" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 50ms;">
                 <div class="spotlight-overlay"></div>
@@ -392,7 +421,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 2. S O N G[cite: 1] -->
+            <!-- 2. S O N G -->
             <a href="http://facebook.com/So0NG" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 100ms;">
                 <div class="spotlight-overlay"></div>
@@ -410,7 +439,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 3. F a m i l y[cite: 1] -->
+            <!-- 3. F a m i l y -->
             <a href="https://www.facebook.com/family.abcdafg" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 150ms;">
                 <div class="spotlight-overlay"></div>
@@ -428,7 +457,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 4. Flafilo[cite: 1] -->
+            <!-- 4. Flafilo -->
             <a href="https://www.facebook.com/profile.php?id=100063805205916" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 200ms;">
                 <div class="spotlight-overlay"></div>
@@ -446,7 +475,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 5. Black Rose[cite: 1] -->
+            <!-- 5. Black Rose -->
             <a href="https://www.facebook.com/onlyone11" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 250ms;">
                 <div class="spotlight-overlay"></div>
@@ -464,7 +493,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 6. Muffin[cite: 1] -->
+            <!-- 6. Muffin -->
             <a href="https://www.facebook.com/profile.php?id=100088338304721" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 300ms;">
                 <div class="spotlight-overlay"></div>
@@ -482,7 +511,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 7. VS .Memes[cite: 1] -->
+            <!-- 7. VS .Memes -->
             <a href="https://www.facebook.com/BlueTriangle.11.11" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 350ms;">
                 <div class="spotlight-overlay"></div>
@@ -500,7 +529,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 8. Surgery[cite: 1] -->
+            <!-- 8. Surgery -->
             <a href="https://www.facebook.com/f123ti" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 400ms;">
                 <div class="spotlight-overlay"></div>
@@ -518,7 +547,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 9. Fav memes[cite: 1] -->
+            <!-- 9. Fav memes -->
             <a href="https://www.facebook.com/profile.php?id=100078871867072" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 450ms;">
                 <div class="spotlight-overlay"></div>
@@ -536,7 +565,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 10. V i e w s.[cite: 1] -->
+            <!-- 10. V i e w s. -->
             <a href="https://www.facebook.com/views.fans" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 500ms;">
                 <div class="spotlight-overlay"></div>
@@ -554,7 +583,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 11. هيلبْولوجى[cite: 1] -->
+            <!-- 11. هيلبْولوجى -->
             <a href="https://www.facebook.com/Helpologyy" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 550ms;">
                 <div class="spotlight-overlay"></div>
@@ -572,7 +601,7 @@
                 <span class="relative z-10 w-full py-2 rounded-xl bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">زيارة الصفحة</span>
             </a>
 
-            <!-- 12. T h o u g h t s[cite: 1] -->
+            <!-- 12. T h o u g h t s -->
             <a href="https://www.facebook.com/Thooughts.fans" target="_blank" rel="noopener noreferrer" 
                class="card-3d group relative bg-[#0b0e17]/90 border border-white/10 hover:border-sky-500/60 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-between text-center backdrop-blur-md shadow-2xl hover:shadow-sky-500/25 overflow-hidden animate-fade-in" style="animation-delay: 600ms;">
                 <div class="spotlight-overlay"></div>
@@ -593,9 +622,9 @@
         </div>
     </main>
 
-    <!-- أزرار التحكم العائمة[cite: 1] -->
+    <!-- أزرار التحكم العائمة -->
     
-    <!-- زر التحكم بالقرآن[cite: 1] -->
+    <!-- زر التحكم بالقرآن -->
     <div class="fixed bottom-6 right-6 z-50">
         <button id="toggleAudioBtn" class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#0b0e17]/90 border border-emerald-500/40 text-emerald-400 shadow-xl shadow-black/60 backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300 group">
             <div id="soundBars" class="flex items-end gap-1 h-4">
@@ -607,7 +636,7 @@
         </button>
     </div>
 
-    <!-- زر التيليجرام العائم[cite: 1] -->
+    <!-- زر التيليجرام العائم -->
     <aside class="fixed bottom-6 left-6 z-50">
         <a href="https://t.me/NN5_i" target="_blank" rel="noopener noreferrer" 
            class="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#24A1DE] text-white shadow-2xl shadow-[#24A1DE]/40 hover:scale-110 active:scale-95 transition-all duration-300 group">
@@ -621,14 +650,14 @@
         </a>
     </aside>
 
-    <!-- الفوتر[cite: 1] -->
+    <!-- الفوتر -->
     <footer class="w-full border-t border-white/5 py-7 px-4 text-center text-sm text-slate-400 relative z-10 backdrop-blur-md bg-black/40">
         <p class="font-medium tracking-wide">جميع الحقوق محفوظة لـ © HAMED</p>
     </footer>
 
-    <!-- السكريبتات[cite: 1] -->
+    <!-- السكريبتات -->
     <script>
-        // تأثير الكتابة التلقائية[cite: 1]
+        // تأثير الكتابة التلقائية
         const textToType = "لو عايز توصل لهدف معين احنا بنقدملك ده من خلال الصفحات الاكثر تفاعلاً";
         const typewriterEl = document.getElementById('typewriter-text');
         let charIndex = 0;
@@ -645,7 +674,7 @@
             setTimeout(typeWriter, 500);
         });
 
-        // تشغيل صوت القرآن التلقائي مع أول تفاعل[cite: 1]
+        // تشغيل صوت القرآن التلقائي مع أول تفاعل
         const audio = document.getElementById('quranAudio');
         const toggleAudioBtn = document.getElementById('toggleAudioBtn');
         const soundBars = document.getElementById('soundBars').children;
@@ -699,7 +728,7 @@
             }
         });
 
-        // حركة الماوس المتزامنة[cite: 1]
+        // حركة الماوس المتزامنة
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
         let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
@@ -727,7 +756,7 @@
             el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
         });
 
-        // إمالة 3D وتأثير Spotlight للكروت[cite: 1]
+        // إمالة 3D وتأثير Spotlight للكروت
         const cards = document.querySelectorAll('.card-3d');
         cards.forEach((card) => {
             card.addEventListener('mousemove', (e) => {
